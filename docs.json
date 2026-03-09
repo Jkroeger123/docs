@@ -15,8 +15,20 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["index"]
+            "pages": [
+              "index"
+            ]
           }
+        ]
+      },
+      {
+        "tab": "Playbooks",
+        "pages": [
+          "intro-ops",
+          "customer",
+          "investor-and-advisor-intro-playbook",
+          "employee-advocacy-intro-playbook",
+          "partner-ecosystem-intro-playbook"
         ]
       }
     ]
