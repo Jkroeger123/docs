@@ -1,0 +1,113 @@
+---
+title: "HubSpot"
+description: "Two-way HubSpot sync — bring CRM relationship signals into HiveSight and write intro opportunities back to your pipeline."
+---
+
+HubSpot is HiveSight's deepest CRM integration. It pulls contact, account,
+and deal state into HiveSight to enrich relationship scoring, and writes
+saved intro opportunities back to HubSpot as deals.
+
+<Note>
+HubSpot is available on the **Team** plan and above. Solo plans can use
+the read-only LinkedIn-based graph without CRM signals.
+</Note>
+
+## Connect HubSpot
+
+<Steps>
+  <Step title="Open integrations">
+    From your ecosystem, go to **Settings → Integrations** and click
+    **Connect** on the HubSpot card.
+  </Step>
+  <Step title="Authorize">
+    You'll be redirected to HubSpot's OAuth screen. HiveSight requests
+    scoped read access to contacts, companies, deals, and owners, plus
+    write access for the optional writeback feature.
+  </Step>
+  <Step title="Initial sync">
+    First sync usually completes in 5–30 minutes depending on the size of
+    your HubSpot portal. You can keep using HiveSight while it runs —
+    CRM signals appear progressively.
+  </Step>
+</Steps>
+
+## What HubSpot signals do
+
+HubSpot data sharpens two things HiveSight does:
+
+1. **Relationship scoring.** A contact your team last_contacted_at recently
+   gets a strength boost. A contact in your CRM as a customer adds context
+   to that connector edge.
+2. **Account-state-aware ranking.** Target-account contacts that already
+   exist in your CRM are tagged so the dashboard can prioritize
+   intros into accounts where you don't yet have a warm path *and* don't
+   yet have CRM coverage.
+
+## Writeback (optional)
+
+When **Writeback** is enabled, HiveSight pushes warm-intro signal directly
+onto your existing HubSpot **companies and contacts** — no new deals
+created, no parallel object to maintain. Reps see the same intro
+intelligence on the records they already work in.
+
+HiveSight provisions and populates these custom properties on first run:
+
+| Object | Property | Description |
+| --- | --- | --- |
+| Company | `hivesight_intro_strength_pct` | Strongest intro path strength as a 0–100 percent. |
+| Company | `hivesight_paths_count` | Number of warm paths your team has into this account. |
+| Company | `hivesight_best_target` | Best person to target for an intro. |
+| Company | `hivesight_best_connector` | The connector who's the strongest bridge in. |
+| Company | `hivesight_link` | Deep link back to the company view in HiveSight. |
+| Contact | `hivesight_intro_strength_pct` | Strongest intro path strength to this contact. |
+| Contact | `hivesight_paths_count` | Warm paths your team has to this contact. |
+| Contact | `hivesight_best_connector` | The strongest connector who can reach them. |
+| Contact | `hivesight_link` | Deep link back to the contact view in HiveSight. |
+
+Writeback runs hourly. Toggle it on or off in **Settings → Integrations**
+without having to disconnect the integration.
+
+<Tip>
+The property bootstrap is automatic on first run. If your HubSpot admin
+restricts custom property creation, you'll see a clear error in the
+HubSpot card and writeback stays disabled until properties are
+pre-created or the permission is granted.
+</Tip>
+
+## What gets synced
+
+| Object | Direction | Frequency |
+| --- | --- | --- |
+| Contacts | HubSpot → HiveSight | Hourly delta |
+| Companies | HubSpot → HiveSight | Hourly delta |
+| Deals | HubSpot → HiveSight | Hourly delta |
+| Owners | HubSpot → HiveSight | Daily |
+| Intro intelligence (company/contact properties) | HiveSight → HubSpot | Hourly (if writeback on) |
+
+Sync uses delta tokens so only changed records are pulled after the
+initial backfill.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Sync error: insufficient scopes">
+    HiveSight needs `contacts`, `crm.objects.companies.read`, and
+    `crm.objects.deals.read`. Disconnect and reconnect — the OAuth flow
+    will request the missing scopes.
+  </Accordion>
+  <Accordion title="Writeback error: property creation blocked">
+    Ask your HubSpot admin to either grant your user's role the
+    *Create properties* permission, or pre-create the `hivesight_connector`
+    and `hivesight_opportunity_url` properties on the Deals object.
+  </Accordion>
+  <Accordion title="Contact doesn't show in HiveSight">
+    Check the contact has a LinkedIn URL on their HubSpot record — that's
+    how HiveSight maps CRM contacts to the LinkedIn graph.
+  </Accordion>
+</AccordionGroup>
+
+## Disconnect
+
+Click **Disconnect** on the HubSpot card. HiveSight revokes the OAuth
+connection with HubSpot and deletes all cached CRM state. Saved intro
+opportunities and the deals already written back to HubSpot remain intact.

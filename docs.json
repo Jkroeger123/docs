@@ -15,9 +15,28 @@
         "groups": [
           {
             "group": "Getting started",
+            "pages": ["index", "quickstart", "concepts"]
+          },
+          {
+            "group": "Integrations",
             "pages": [
-              "index"
+              "integrations/google-calendar",
+              "integrations/hubspot",
+              "integrations/mcp",
+              "integrations/slack",
+              "integrations/chrome-extension"
             ]
+          },
+          {
+            "group": "Workflows",
+            "pages": [
+              "workflows/warm-intro-outbound",
+              "workflows/pre-meeting-dossiers"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": ["reference/plans"]
           }
         ]
       },

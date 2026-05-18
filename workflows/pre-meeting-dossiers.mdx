@@ -1,0 +1,80 @@
+---
+title: "Pre-meeting dossiers"
+description: "Show up to every external call with a brief on every attendee — automatically."
+---
+
+If your team takes a lot of external meetings — discovery calls, partner
+chats, advisory conversations — HiveSight can deliver a brief on every
+external attendee before each meeting starts. Less time prepping, more
+time showing up sharp.
+
+## Set up (one-time)
+
+<Steps>
+  <Step title="Connect Google Calendar">
+    Each person on the team connects their own Google Calendar from
+    **Settings → Integrations → Google Calendar**. See the
+    [Google Calendar integration guide](/integrations/google-calendar).
+  </Step>
+  <Step title="Choose delivery channel">
+    Pick **Email**, **Slack DM**, or **Both**. Slack DM is the most
+    common — it lands in the same place your team already gets
+    notifications.
+  </Step>
+  <Step title="Choose timing">
+    - **Morning-of** — one batched message at 8am local with a brief for
+      every external meeting that day. Best for people who plan their
+      day in the morning.
+    - **15 minutes before** — individual briefs land 15 minutes ahead of
+      each meeting. Best for people whose calendars shift mid-day.
+  </Step>
+  <Step title="Enable notifications">
+    Notifications are off by default after connecting Google Calendar.
+    Flip **Notifications enabled** to start receiving dossiers.
+  </Step>
+</Steps>
+
+## What you'll see
+
+Each dossier covers one external attendee with:
+
+- **Identity** — name, title, company, LinkedIn URL.
+- **ICP fit** — Direct buyer / Adjacent buyer / Intel / Unknown.
+- **Warm paths** — the top connectors on your team who know this person,
+  with strength tiers.
+- **Shared context** — schools, prior companies, mutual connections,
+  recommendations.
+- **Recent activity** — public LinkedIn posts and notable events (job
+  changes, fundraising news, content they've engaged with).
+
+If an attendee can't be resolved (no email, no LinkedIn match), they're
+omitted from the dossier — the brief skips them rather than guessing.
+
+## What's filtered out
+
+To keep noise low, dossiers skip:
+
+- Internal meetings — everyone on the same email domain.
+- Meetings with zero external attendees.
+- Recurring meetings flagged as standing internal (1:1s, team standups).
+
+## Post-call follow-up
+
+After a meeting wraps, HiveSight surfaces a **post-call follow-up** prompt
+in Slack with any *name-drops* it detected during the call — people the
+prospect mentioned that HiveSight can resolve against your network. Click
+the suggested action and HiveSight will sync a follow-up task to your
+CRM (HubSpot) so the next intro doesn't slip.
+
+## Connector enrichment as a side effect
+
+Even with notifications off, connecting Google Calendar feeds the
+warm-path graph. People you've met with multiple times are added as soft
+connectors — their networks contribute to your team's warm-path surface
+without them having to install or authorize anything.
+
+<Tip>
+This is the cheapest way to expand your team's network coverage. Encourage
+every person who joins HiveSight to connect their calendar, even if they
+don't want dossier notifications.
+</Tip>

@@ -1,0 +1,96 @@
+---
+title: "MCP server"
+description: "Query your HiveSight network in natural language from Claude, Cursor, ChatGPT, or any MCP-compatible client."
+---
+
+HiveSight exposes a Model Context Protocol (MCP) server so you can ask
+your network questions in plain English from any MCP client — Claude
+Desktop, Cursor, the MCP Inspector, ChatGPT's MCP support, or anything
+else that speaks the protocol.
+
+The agent on the other end of the MCP server has access to the same tools
+the in-app HiveSight agent uses: warm-path lookup, account research,
+intro suggestions, contact lookup, ICP fit checks, and more.
+
+## How it works
+
+Each ecosystem has its own MCP URL:
+
+```
+https://app.hivesight.so/api/mcp/<ecosystem-id>
+```
+
+You can copy yours from **Settings → Integrations → MCP Server**.
+
+Authentication uses OAuth 2.1 — your MCP client follows a standard
+discovery handshake and signs you in with your HiveSight account on first
+connect. Once authorized, the client holds a refresh token and won't ask
+again unless you revoke access.
+
+## Connect from Claude Desktop
+
+<Steps>
+  <Step title="Open Settings → Developer → MCP Servers">
+    In Claude Desktop, click **Edit MCP server config**.
+  </Step>
+  <Step title="Add the HiveSight server">
+    Paste this entry (replace `<ecosystem-id>` with yours):
+    ```json
+    {
+      "mcpServers": {
+        "hivesight": {
+          "url": "https://app.hivesight.so/api/mcp/<ecosystem-id>"
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Restart Claude">
+    Claude reloads the MCP server list. The first time you send a message
+    that uses HiveSight, Claude will open a browser tab for you to sign in
+    with your HiveSight account.
+  </Step>
+</Steps>
+
+## Connect from Cursor
+
+In Cursor, open **Settings → MCP** and click **Add new MCP server**. Use
+the same URL from the integrations page. Cursor handles the OAuth flow
+automatically.
+
+## Connect from MCP Inspector
+
+The [MCP Inspector](https://github.com/modelcontextprotocol/inspector) is
+useful for testing tool responses. Point it at your ecosystem URL and
+authenticate when prompted.
+
+## What you can ask
+
+The MCP server exposes the agent toolset. Some examples:
+
+- *"Who on my team has the strongest warm path into Acme Corp?"*
+- *"Find me all VPs of Sales in my network at Series B SaaS companies."*
+- *"What does my team know about Jane Doe at Stripe? Any shared context?"*
+- *"Pull up upcoming meetings where I don't yet have a dossier."*
+- *"Which target accounts have I made no progress on this quarter?"*
+
+The agent will resolve names against your ecosystem's graph, score warm
+paths, and return structured answers. For dossier-style outputs it pulls
+the same data the in-app dossier flow uses.
+
+<Tip>
+Each MCP URL is scoped to one ecosystem. If you have multiple ecosystems,
+add one MCP server per ecosystem in your client config with distinct
+names — `hivesight-enterprise`, `hivesight-mid-market`, etc.
+</Tip>
+
+## Security notes
+
+- The MCP URL itself isn't a secret — the OAuth handshake is what
+  authorizes access. Anyone who hits the URL without a valid token gets
+  a 401.
+- Tokens are scoped to your HiveSight user. If you're a member of a team
+  ecosystem, your MCP tokens only see the ecosystems you have access to.
+- Revoke a connected client at any time by removing the HiveSight MCP
+  entry from the client's config (Claude Desktop, Cursor, etc.) — the
+  refresh token stops working as soon as it's removed.

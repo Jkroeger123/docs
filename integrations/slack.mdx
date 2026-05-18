@@ -1,0 +1,84 @@
+---
+title: "Slack"
+description: "Daily digests, intro-opportunity alerts, and an in-Slack agent for asking your network questions."
+---
+
+The Slack integration delivers HiveSight signal to where your team
+already works — daily digests, new-opportunity pings, and an
+@HiveSight slash command that runs the same agent you use in the app.
+
+## Connect Slack
+
+<Steps>
+  <Step title="Open integrations">
+    From your ecosystem, go to **Settings → Integrations** and click
+    **Connect** on the Slack card.
+  </Step>
+  <Step title="Pick a channel">
+    HiveSight will request standard scopes (post messages, read user
+    info, respond to mentions). After approving, choose which channel
+    HiveSight should post into for digests and alerts. Most teams use a
+    dedicated `#hivesight` channel.
+  </Step>
+</Steps>
+
+## What HiveSight posts
+
+<AccordionGroup>
+  <Accordion title="Daily / weekly digest">
+    A summary of the top intro opportunities ranked by ICP fit ×
+    connection strength, plus dossier-driven highlights from your team's
+    upcoming meetings. Frequency is configurable: off, daily, or weekly.
+    Digests fire once per day around mid-morning UTC.
+  </Accordion>
+  <Accordion title="New ICP-fit awareness">
+    When a new person appears in your team's network who matches your
+    ICP and is at a target account, HiveSight pings the channel with a
+    one-line summary and a link to the path.
+  </Accordion>
+  <Accordion title="New intro opportunities">
+    When a strong warm path is identified that wasn't there yesterday,
+    HiveSight posts it so your team can move on it before the moment
+    passes.
+  </Accordion>
+  <Accordion title="Pre-meeting dossiers (with Google Calendar)">
+    If Google Calendar is also connected and the connector chooses Slack
+    delivery, dossiers land as direct messages or in the channel ahead
+    of each meeting.
+  </Accordion>
+</AccordionGroup>
+
+## The HiveSight Slack agent
+
+Mention `@HiveSight` in any channel where the app is invited (or DM
+the app directly) and you get the same agent the in-app chat uses.
+
+Examples:
+
+> `@HiveSight who can introduce me to someone at Notion?`
+
+> `@HiveSight summarize my team's coverage of the Snowflake account.`
+
+> `@HiveSight what's the warmest path into Sam Altman?`
+
+Responses thread under your message so they don't pollute the channel.
+The agent only sees the ecosystem associated with that Slack workspace
+— if your org runs multiple ecosystems, only the one bound to Slack is
+queried.
+
+## Toggle individual alerts
+
+Under **Settings → Integrations → Slack**, each alert type has its own
+toggle:
+
+- Daily / weekly digest frequency
+- New ICP-fit awareness alerts
+- New intro opportunity alerts
+
+Turn off any you don't want without disconnecting Slack entirely.
+
+## Disconnect
+
+Click **Disconnect** on the Slack card to revoke the bot from your
+workspace. HiveSight clears the cached channel ID and stops posting
+immediately.

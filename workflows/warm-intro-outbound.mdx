@@ -1,0 +1,82 @@
+---
+title: "Account-based outbound with warm intros"
+description: "How to run an ABM outbound motion that starts every sequence with the warmest path your team can find."
+---
+
+This playbook is the most common HiveSight motion. You have a list of
+target accounts, your team has networks, and you want every outbound
+sequence to start with the warmest path you can find — not a cold email.
+
+## Set up (one-time)
+
+<Steps>
+  <Step title="Add target accounts">
+    Upload your target account list as a CSV or paste accounts manually.
+    The more accounts, the more paths to surface.
+  </Step>
+  <Step title="Define ICP">
+    Write a clear ICP definition that names the buyer role (e.g. *VP
+    RevOps*, *Head of Sales*). The clearer the ICP, the better the
+    Direct-buyer vs. Adjacent-buyer split.
+  </Step>
+  <Step title="Add connectors">
+    Get every meaningful network onto your team — AEs, founders, advisors,
+    investors, board members. Each connector multiplies the warm-path
+    surface.
+  </Step>
+  <Step title="Connect HubSpot">
+    Optional but recommended. CRM signal makes intros sharper and
+    writeback keeps the pipeline in sync.
+  </Step>
+</Steps>
+
+## Weekly cadence
+
+**Monday morning — review top intro paths.**
+
+Open the **Dashboard**. The "Top intro paths" section is ranked by
+`ICP fit × connection strength × target-account boost`. The first 3–6
+cards are usually the right starting point for the week.
+
+For each card:
+
+1. Click the prospect's name to open the profile drawer. Skim shared
+   context — schools, prior companies, mutual connections.
+2. Click the connector to view the relationship signals — recent
+   engagement, recommendations, mutual posts.
+3. If it's a good fit, click **Save as opportunity**. Pick the relevant
+   intro path and add a one-line goal.
+
+**Tuesday – Thursday — run the intros.**
+
+Saved opportunities show up under **Warm intros**. For each one:
+
+- DM the connector with the prefilled context HiveSight surfaces (you
+  can copy-paste the dossier).
+- Move the opportunity to *Active* status when the connector agrees to
+  make the intro.
+- Move to *Closed* once the intro lands or the connector declines.
+
+**Friday — review coverage gaps.**
+
+Filter target accounts by *no warm path*. These accounts need cold
+outbound — or, more usefully, they're the prompt for "who should we add
+as a connector to cover this account?"
+
+## Slack-driven flow
+
+If your team lives in Slack, set the digest to **Daily** under **Settings
+→ Integrations → Slack**. The team sees the top paths at 9am every
+morning without having to open the app. New intro opportunities ping
+the channel in real time so someone can claim them.
+
+## When intros don't surface
+
+A few common reasons the dashboard returns nothing — and the fix for each:
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| Empty dashboard | No connectors added | Add at least one connector to seed the graph. |
+| No ICP matches | ICP definition too narrow | Loosen ICP or wait for classifications to backfill. |
+| Paths only to "Intel" contacts | ICP role isn't surfaced in the network | Add senior connectors (founders, execs) whose networks reach decision-makers. |
+| Same names every week | You're not saving them as opportunities | Save them. Saved opportunities filter out of the dashboard so new paths surface. |

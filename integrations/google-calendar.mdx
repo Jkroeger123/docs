@@ -1,0 +1,80 @@
+---
+title: "Google Calendar"
+description: "Pre-meeting dossiers on every external attendee, delivered to Slack or email before each call."
+---
+
+Connecting Google Calendar unlocks two things:
+
+1. **Pre-meeting dossiers** — HiveSight delivers a brief on every external
+   attendee before each call you take.
+2. **Connector enrichment** — people you've met with regularly are added
+   as soft connectors so their networks contribute to your warm paths.
+
+## Connect Google Calendar
+
+Each user on your team connects their own Google account — HiveSight needs
+per-user OAuth so each person sees dossiers for *their* calendar, not
+someone else's.
+
+<Steps>
+  <Step title="Open integrations">
+    From your ecosystem, go to **Settings → Integrations** and click
+    **Connect** on the Google Calendar card.
+  </Step>
+  <Step title="Authorize with Google">
+    You'll be redirected to Google's OAuth screen. HiveSight requests
+    read-only access to your calendar events and attendee details. No
+    write access — we never modify your calendar.
+  </Step>
+  <Step title="Choose delivery">
+    Pick where dossiers should land:
+    - **Email** — sent to your work address.
+    - **Slack DM** — pushed as a direct message (requires Slack
+      integration; falls back to channel post if your Slack ID can't be
+      resolved).
+    - **Both**.
+  </Step>
+  <Step title="Choose timing">
+    Pick when dossiers should arrive:
+    - **Morning-of** — one batched message at the start of your day with
+      a brief for every external meeting.
+    - **15 minutes before** — individual brief landing 15 minutes ahead
+      of each meeting.
+  </Step>
+</Steps>
+
+<Note>
+Notifications are off by default after connecting. Flip **Notifications
+enabled** to start receiving dossiers. The connector enrichment runs
+regardless — your meeting history feeds the warm-path graph even with
+notifications off.
+</Note>
+
+## What's in a dossier
+
+For each external attendee, HiveSight pulls together:
+
+- Name, title, and company
+- LinkedIn profile and recent posts (when public)
+- ICP segment (Direct buyer, Adjacent buyer, Intel)
+- The strongest warm-path connectors on your team who can introduce or
+  vouch for you
+- Shared context — schools, prior companies, mutual connections,
+  recommendations
+
+Dossiers skip internal meetings (everyone on the same domain) and meetings
+with no external attendees.
+
+## What gets synced
+
+| Data | Direction | Notes |
+| --- | --- | --- |
+| Calendar events (next 7 days) | Read | Used to schedule dossier delivery. |
+| Past meeting attendees | Read | Used to add people you've met as soft connectors. |
+| Calendar metadata | None | We don't modify your calendar. |
+
+## Disconnect
+
+To revoke access, go to **Settings → Integrations** and click **Disconnect**
+on the Google Calendar card. HiveSight calls Google's OAuth revoke
+endpoint immediately and deletes the cached calendar data.

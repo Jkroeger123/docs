@@ -1,0 +1,126 @@
+---
+title: "Core concepts"
+description: "The vocabulary HiveSight uses for ecosystems, connectors, network strength, ICP fit, and intro opportunities."
+---
+
+A short glossary of the terms you'll see across the product.
+
+## Ecosystem
+
+An **ecosystem** is a workspace scoped to a single GTM motion. It owns:
+
+- The team members whose networks are mapped (connectors)
+- The ICP definition used to classify contacts
+- The target accounts list
+- The intro opportunities pipeline
+- The integration connections (HubSpot, Slack, Google Calendar, MCP)
+
+Most teams run a single ecosystem. You'd add a second one when you're
+running a meaningfully different motion — a new product line, a new
+segment, or a separate geography that should be reported on independently.
+
+## Connector
+
+A **connector** is someone whose LinkedIn network HiveSight maps. Usually a
+teammate, but can also be an advisor, investor, customer, or partner.
+
+Each connector has a *connection type* used for filtering anywhere people
+are listed. Every new ecosystem ships with these defaults:
+
+- **Team** — your teammates
+- **Investor**
+- **Advisor**
+- **Customer**
+- **Partner**
+- **Influencer**
+- **Connection of Team** — surfaced via Calendar / LinkedIn enrichment
+- **Other**
+
+You can rename, recolor, reorder, or add custom types from **Settings →
+Connector types**. Connectors added automatically by a source get tagged
+*Added from Calendar* or *Synced from LinkedIn*.
+
+Plans cap the number of connectors per ecosystem. See [Plans & seats](/reference/plans).
+
+## Network
+
+A connector's **network** is everyone they've meaningfully engaged with on
+LinkedIn — close connections, mutual posters, people they've recommended
+or been recommended by, alumni from the same school or company, and so on.
+
+HiveSight unions every connector's network into the ecosystem's combined
+network graph. That's the universe of people you can run warm intros to.
+
+## Relationship score & strength tier
+
+Every edge between a connector and someone in their network has a
+**relationship score** between 0 and 1. The score is built from multiple
+signals: engagement frequency, language used, recommendations,
+mutual posts, and shared affiliations.
+
+Scores roll up into four tiers shown in the UI:
+
+| Tier | Score range | What it means |
+| --- | --- | --- |
+| **Very likely** | ≥ 0.7 | Strong shared history, recent engagement, or explicit recommendation. |
+| **Likely** | 0.45 – 0.7 | Multiple signals — work overlap, mutual engagement, shared affiliations. |
+| **Possible** | 0.25 – 0.45 | Some shared context, but limited signals to verify warmth. |
+| **Cold** | < 0.25 | Weak or unverified connection — treat as a cold reach. |
+
+## ICP fit
+
+Your **ICP definition** is a plain-English description of who you sell to.
+HiveSight classifies every person in the ecosystem's network into one of
+four segments:
+
+- **Direct buyer** — the decision-maker for your product.
+- **Adjacent buyer** — an influencer or stakeholder in the buying motion.
+- **Intel** — useful context (employee, alum, partner) without buying power.
+- **Unknown / no match** — not yet classified, or doesn't match your ICP.
+
+When you change the ICP definition, classifications re-run automatically.
+Stale classifications from the previous definition are ignored on the next
+read.
+
+## Target account
+
+A **target account** is a company you want to break into. Target accounts
+drive the most prominent boosts in the warm-path ranking — a Likely
+connector for a target-account direct buyer outranks a Very-likely
+connector for someone outside your target list.
+
+Two ways to add targets: paste them one at a time, or upload a CSV.
+
+## Intro opportunity
+
+When you click **Save as opportunity** on a warm path, it becomes a row in
+your **Opportunities** pipeline. From there you can:
+
+- Track status across three fixed buckets — **Active**, **Paused**,
+  **Closed** — with your own custom status labels inside each bucket
+  (e.g. "Intro requested", "Awaiting reply", "Won")
+- Add notes and activity entries
+- Push intro signals to HubSpot (if HubSpot is connected)
+- See alerts in Slack when new opportunities surface
+
+Saved opportunities are filtered out of the dashboard's "Top intro paths"
+section so the same names don't keep surfacing after you've taken action.
+
+## Dossier
+
+A **dossier** is a brief HiveSight builds about a person ahead of a meeting
+— their company, role, warm-path connections from your team, recent
+notable activity, and shared signals. Dossiers are delivered before each
+external meeting on a connected Google Calendar.
+
+## Connector source
+
+A **connector source** is an automation that adds connectors or enriches
+their networks. Examples:
+
+- **Google Calendar backfill** — adds people you've met with as soft
+  connectors.
+- **LinkedIn close-connections sync** — refreshes a connector's
+  high-engagement network on a schedule.
+
+Sources are configured per-connector in the ecosystem settings.
