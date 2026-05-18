@@ -1,52 +1,77 @@
 ---
 title: "Chrome extension"
-description: "Inline warm-path lookups and dossiers while your team browses LinkedIn and the web."
+description: "A HiveSight sidebar inside Google Calendar — relationship dossiers on every external meeting attendee, right where you plan your day."
 ---
 
-The HiveSight Chrome extension overlays warm-path information on the
-sites your team already uses to research prospects — LinkedIn profiles,
-LinkedIn company pages, and arbitrary email addresses surfaced by other
-tools (HubSpot, Apollo, etc.).
+The HiveSight Chrome extension adds a right-edge sidebar to **Google
+Calendar**. Open any event with external attendees and the sidebar
+surfaces a HiveSight dossier for each one — your team's warm paths into
+them, the strongest connector, shared context, and a deep link back to
+the dashboard.
+
+It doesn't run on LinkedIn or other sites — the only host the extension
+touches is `calendar.google.com`.
 
 ## Install
 
-1. Open the Chrome Web Store listing (linked from **Settings →
-   Integrations → Chrome Extension**).
-2. Click **Add to Chrome**.
-3. Pin the extension to your toolbar for quick access.
-4. Sign in with your HiveSight account on first launch.
+<Steps>
+  <Step title="Add the extension">
+    Open the [HiveSight Calendar Dossier extension in the Chrome Web Store](https://chromewebstore.google.com/detail/hivesight-calendar-dossie/moekgheleeifmibhgfplfdjdahdaadcc)
+    and click **Add to Chrome**.
+  </Step>
+  <Step title="Sign in once">
+    Sign in to HiveSight at [hivesight.so](https://hivesight.so) in any
+    Chrome tab. The extension picks up your session automatically via
+    Clerk's `syncHost` mechanism — no separate login.
+  </Step>
+  <Step title="Open Google Calendar">
+    Visit [calendar.google.com](https://calendar.google.com) and click any
+    event with external attendees. The HiveSight sidebar slides in from
+    the right with a dossier for each attendee.
+  </Step>
+</Steps>
 
-## What it does
+## What you'll see
 
 <CardGroup cols={2}>
-  <Card title="LinkedIn profile overlay" icon="linkedin">
-    On any LinkedIn profile, the extension shows whether your team has a
-    warm path to this person, the strongest connector, ICP segment, and a
-    quick "Save as opportunity" action.
+  <Card title="Per-attendee dossier" icon="user">
+    For each external attendee: name, title, company, ICP fit, and the
+    top warm-path connectors on your team who can introduce or vouch for
+    you.
   </Card>
-  <Card title="LinkedIn company overlay" icon="building">
-    On a LinkedIn company page, shows your team's coverage of that
-    account — connector count, top warm paths, target-account status.
+  <Card title="Shared context" icon="link">
+    Schools, prior companies, mutual connections, recommendations —
+    everything the in-app dossier surfaces.
   </Card>
-  <Card title="Email lookup" icon="envelope">
-    Right-click any email address on a webpage to look up the matching
-    contact in HiveSight (warm paths + dossier).
+  <Card title="Recovery flow" icon="rotate">
+    If HiveSight couldn't auto-resolve an email to a LinkedIn profile,
+    paste the LinkedIn URL inline. The dossier worker re-runs and the
+    brief lands next time you open the event.
   </Card>
-  <Card title="Inline dossier" icon="file-lines">
-    Click any name surfaced by the extension to open the full HiveSight
-    dossier without leaving the page.
+  <Card title="Deep links back to HiveSight" icon="arrow-up-right-from-square">
+    Click any prospect or connector to jump straight to the connector
+    view in the dashboard with the full network context.
   </Card>
 </CardGroup>
 
-## Switching ecosystems
+## How session sync works
 
-If you have access to multiple ecosystems, the extension popup has an
-ecosystem switcher at the top. Pick the ecosystem whose graph you want
-the inline overlays to query.
+The extension never asks for a separate login. Once you're signed in to
+HiveSight in a regular Chrome tab, Clerk's `syncHost` bridges the
+session into the extension. Sign out of HiveSight and the extension is
+signed out too on the next event open.
+
+## Ecosystem switching
+
+If you have access to multiple ecosystems, the extension popup (click the
+HiveSight icon in your Chrome toolbar) has an ecosystem switcher. Pick
+the ecosystem whose graph the sidebar should query.
 
 ## Privacy
 
-The extension only sends queries when you're on a supported page and
-HiveSight has data to show. It doesn't track your browsing, doesn't read
-page content beyond the LinkedIn profile/company identifier, and doesn't
-sync anything back without explicit action (like saving an opportunity).
+- The only host the extension reads is `calendar.google.com` — it
+  doesn't run on LinkedIn, your email, or any other site.
+- It reads the currently-open event's attendees so it can ask HiveSight
+  for dossiers. It doesn't read your full calendar or any unrelated
+  content on the page.
+- It never writes to your calendar, only renders an overlay sidebar.
