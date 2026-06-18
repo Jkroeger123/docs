@@ -66,17 +66,106 @@ authenticate when prompted.
 
 ## What you can ask
 
-The MCP server exposes the agent toolset. Some examples:
+The agent picks the right tool from your question — you don't need to
+know tool names, just describe what you want. Here are the patterns that
+work best. Mix and match: each pattern composes with the others.
 
-- *"Who on my team has the strongest warm path into Acme Corp?"*
-- *"Find me all VPs of Sales in my network at Series B SaaS companies."*
-- *"What does my team know about Jane Doe at Stripe? Any shared context?"*
-- *"Pull up upcoming meetings where I don't yet have a dossier."*
-- *"Which target accounts have I made no progress on this quarter?"*
+### Topic discovery — who in my network is talking about X?
 
-The agent will resolve names against your ecosystem's graph, score warm
-paths, and return structured answers. For dossier-style outputs it pulls
-the same data the in-app dossier flow uses.
+Surface people in your network posting or commenting on a specific topic
+or theme.
+
+- *"Who's been posting about AI agents in the last two weeks?"*
+- *"Anyone in my network commenting on Salesforce vs HubSpot?"*
+- *"Show me people writing about Series A fundraising recently."*
+
+### ICP-fit thought-leadership monitoring — posters who don't get a lot of engagement
+
+ICP-fit people who post regularly but get modest engagement are
+high-leverage outreach targets — active, in your buyer profile, and not
+yet over-saturated by inbound.
+
+- *"Find ICP-fit people posting under-the-radar content I could amplify."*
+- *"VP Sales people in my network posting weekly but getting under 20 reactions — they'd notice an inbound."*
+- *"ICP creators with high post volume and low engagement, sorted by post count."*
+
+### Trigger-based workflows — whenever X happens, do Y
+
+MCP doesn't run cron, but you can replay these on a cadence (a Monday
+morning DM works well) and chain detection with a follow-up action like
+drafting a message or adding a connector.
+
+- *"Whenever someone in my ICP changes jobs, write me a congrats message."*
+- *"When a connector engages on a post by an ICP-fit person, surface the post and draft an intro ask."*
+- *"If anyone in my network announces a Series B, add their VP Sales as a target contact."*
+
+### Account momentum — what accounts are heating up?
+
+Spot accounts where multiple employees are interacting with your voice —
+a real buying signal.
+
+- *"Which target accounts have multiple employees engaging with my network this month?"*
+- *"Companies where 2+ people are interacting with my connectors lately."*
+- *"Rank my target accounts by recent engagement volume."*
+
+### Bridge-finder before cold outreach — who knows them?
+
+Always check for a warm path before going cold. Even weak signals (work
+overlap, recommendations) can be worth a name-drop.
+
+- *"I want to reach the VP Sales at Acme — who's my warmest bridge?"*
+- *"Best path into Stripe's new Head of GTM?"*
+- *"Strongest evidence anyone on my team knows Jane Doe."*
+
+### Dormant-relationship reactivation — who have I gone quiet on?
+
+Catch lapsed warm connections before they go cold.
+
+- *"Connectors I haven't met with in 60+ days who still have strong relationships."*
+- *"Lapsed customers who used to be active in our network."*
+- *"Top 10 warm relationships I should re-engage this month."*
+
+### Engagement-pattern intel — how do these two people actually know each other?
+
+Before asking a connector for an intro, understand the basis of the
+relationship.
+
+- *"What's the history between Stephen and Jane? Should I name-drop or ask for a direct intro?"*
+- *"Strongest evidence Stephen knows Jane warmly."*
+- *"Have they actually interacted recently, or is this just a LinkedIn connection?"*
+
+### Post-meeting extraction — I just got off a call, what next?
+
+Calendar-aware. Pulls accounts you've actually met with and ranks intro
+paths by ICP fit.
+
+- *"I met with someone from Coupa, what intros can I extract?"*
+- *"Best ICP-fit paths from my Monday meetings."*
+- *"Rank my recent accounts by intro opportunity."*
+
+### Add a connector on the fly
+
+Maintain your network without leaving your AI client. Works as the
+follow-up step in trigger workflows.
+
+- *"Add Casey Nolan as a customer connector."*
+- *"After this meeting, mark the attendee as a partner connector."*
+
+### ICP coverage audit — where are the gaps?
+
+Find target accounts where you have no warm path. These are where you
+need to either add new connectors or accept the account is cold.
+
+- *"Which target accounts have zero ICP-fit intro paths?"*
+- *"Show target companies where I don't have a single warm path into a decision-maker."*
+
+<Tip>
+**Tips for getting good answers.** Be specific about time windows — "last
+two weeks" / "this month" gives the agent a clear filter. Name connectors
+by name when you can ("through Stephen" beats a generic ask). If the
+first answer is too broad, narrow with a follow-up: *"only VPs"*,
+*"exclude my customers"*, *"only at companies under 200 people."*
+</Tip>
 
 <Tip>
 Each MCP URL is scoped to one ecosystem. If you have multiple ecosystems,
